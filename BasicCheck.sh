@@ -20,7 +20,7 @@ if [ $? -eq 0 ]; then
     memory="Pass"
     valgrind --tool=helgrind --error-exitcode=1 ./$program > /dev/null 2>&1
 
-    if [ $? -ne 1]; then
+    if [ $? -ne 1 ]; then
       echo "Thread race Succeeded"
       race="Pass"
     else
@@ -41,10 +41,9 @@ if [ $? -eq 0 ]; then
     fi
   fi
 else
-  echo "Compilation Fail"
-    res=$(($res+7))
-
-  fi
+ echo "Compilation Fail"
+ res=$(($res+7))
+ fi
   
   cd $currentfolder
 
