@@ -18,7 +18,7 @@ if [ $? -ne 0 ]; then
     memory="Pass"
     valgrind --tool=helgrind --error-exitcode=1 ./$program
 
-    if [ $? -ne 1]; then
+    if [ $? -ne 1 ]; then
       echo "Thread race Succeeded"
       race="Pass"
     else
