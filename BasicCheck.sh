@@ -50,4 +50,4 @@ echo -e "Compilation |  Memory leaks |  Thread race"
 echo -e "$comp        |   $memory        |    $race"
 echo -e "------------------------------------------"
 echo -e "$res"
-exit 0
+exit $res
