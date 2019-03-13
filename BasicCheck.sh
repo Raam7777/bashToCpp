@@ -8,7 +8,7 @@ race="Fail"
 
 make
 
-if [[ $? -ne 0 ]]; then
+if [[ $? -eq 0 ]]; then
   echo "Compilation Succeeded"
   comp="Pass"
   valgrind --leak-check=full --error-exitcode=1 ./$program
