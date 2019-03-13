@@ -8,17 +8,17 @@ race="Fail"
 
 make
 
-if [ $? -ne 0 ]; then
+if [[ $? -ne 0 ]]; then
   echo "Compilation Succeeded"
   comp="Pass"
   valgrind --leak-check=full --error-exitcode=1 ./$program
 
-  if [ $? -ne 1 ]; then
+  if [[ $? -ne 1 ]]; then
     echo "Memory leaks Succeeded"
     memory="Pass"
     valgrind --tool=helgrind --error-exitcode=1 ./$program
 
-    if [ $? -ne 1 ]; then
+    if [[ $? -ne 1 ]]; then
       echo "Thread race Succeeded"
       race="Pass"
     else
@@ -30,7 +30,7 @@ if [ $? -ne 0 ]; then
     echo "Memory leaks Fail"
     res=$(($res+2))
     valgrind --tool=helgrind --error-exitcode=1 ./$program
-    if [ $? -ne 1 ]; then
+    if [[ $? -ne 1 ]]; then
       echo "Thread race Succeeded"
     else
       echo "Thread race Fail"
