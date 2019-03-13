@@ -1,11 +1,13 @@
 #!/bin/#!/bash
 program=$2
+folder=$1
 res=0
 comp="Fail"
 memory="Fail"
 race="Fail"
 
-
+currentfolder=$(pwd)
+cd $folder
 make > /dev/null 2>&1
 
 if [ $? -eq 0 ]; then
@@ -43,6 +45,8 @@ else
     res=$(($res+7))
 
   fi
+  
+  cd $currentfolder
 
 
 echo -e "------------------------------------------"
