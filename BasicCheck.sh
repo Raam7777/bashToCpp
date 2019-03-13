@@ -1,14 +1,16 @@
 #!/bin/#!/bash
+folderName=$1
 program=$2
+currentfolder=$(pwd)
 res=0
 comp="Fail"
 memory="Fail"
 race="Fail"
 
-
+cd $folderName
 make
 
-if [[ $? -eq 0 ]]; then
+if [[ $? -ne 0 ]]; then
   echo "Compilation Succeeded"
   comp="Pass"
   valgrind --leak-check=full --error-exitcode=1 ./$program
@@ -44,7 +46,7 @@ else
 
   fi
 
-
+cd $currentfolder
 echo -e "------------------------------------------"
 echo -e "Compilation |  Memory leaks |  Thread race"
 echo -e "$comp        |   $memory        |    $race"
